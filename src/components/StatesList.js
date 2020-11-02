@@ -4,24 +4,47 @@ import covidApi from '../apis/covidAPI';
 import '../styles/stateslist.css';
 
 class StatesList extends Component {
-	state = { statesList: [] };
+	state = { statesData: [] };
 
 	componentDidMount() {
 		covidApi.get('/api/report/v1').then((response) => {
 			const { data } = response.data;
-			this.setState({ statesList: data });
+			this.setState({ statesData: data });
 			console.log(data);
-			console.log(this.state.statesList);
+		});
+	}
+
+	renderStatesList() {
+		return this.state.statesData.map((item, index) => {
+			let position = index + 1;
+			return (
+				<tr key={item.uid}>
+					<th scope="row">{position}</th>
+					<td>{item.state}</td>
+					<td>{item.cases}</td>
+					<td>{item.suspects}</td>
+					<td>{item.deaths}</td>
+				</tr>
+			);
 		});
 	}
 
 	render() {
 		return (
-			<ul className="list-unstyled">
-				{this.state.statesList.map((item) => (
-					<li key={item.uid}>{item.state}</li>
-				))}
-			</ul>
+			<div id="states-list">
+			<table className="table table-dark">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Estado</th>
+						<th scope="col">Casos</th>
+						<th scope="col">Suspeitas</th>
+						<th scope="col">Mortes</th>
+					</tr>
+				</thead>
+				<tbody>{this.renderStatesList()}</tbody>
+			</table>
+			</div>
 		);
 	}
 }

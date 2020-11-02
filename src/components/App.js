@@ -5,7 +5,11 @@ import '../styles/global.css';
 
 class App extends Component {
 	render() {
-		return <StatesList />;
+		return (
+			<div className="container">
+				<StatesList />
+			</div>
+		);
 	}
 }
 
