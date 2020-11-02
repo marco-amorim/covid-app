@@ -4,3 +4,15 @@ body {
 	background: black;
 	color: white;
 }
+
+span.safe {
+	color: #04d361;
+}
+
+span.danger {
+	color: #dc3545;
+}
+
+span.warning {
+	color: #ffc107;
+}

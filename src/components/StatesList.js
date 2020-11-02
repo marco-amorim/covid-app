@@ -10,7 +10,6 @@ class StatesList extends Component {
 		covidApi.get('/api/report/v1').then((response) => {
 			const { data } = response.data;
 			this.setState({ statesData: data });
-			console.log(data);
 		});
 	}
 
@@ -20,10 +19,18 @@ class StatesList extends Component {
 			return (
 				<tr key={item.uid}>
 					<th scope="row">{position}</th>
-					<td>{item.state}</td>
-					<td>{item.cases}</td>
-					<td>{item.suspects}</td>
-					<td>{item.deaths}</td>
+					<td>
+						{item.state} - {item.uf}
+					</td>
+					<td>
+						<span className="safe">{item.cases}</span>
+					</td>
+					<td>
+						<span className="warning">{item.suspects}</span>
+					</td>
+					<td>
+						<span className="danger">{item.deaths}</span>
+					</td>
 				</tr>
 			);
 		});
@@ -32,18 +39,18 @@ class StatesList extends Component {
 	render() {
 		return (
 			<div id="states-list">
-			<table className="table table-dark">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Estado</th>
-						<th scope="col">Casos</th>
-						<th scope="col">Suspeitas</th>
-						<th scope="col">Mortes</th>
-					</tr>
-				</thead>
-				<tbody>{this.renderStatesList()}</tbody>
-			</table>
+				<table className="table table-dark">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Estado</th>
+							<th scope="col">Casos Totais</th>
+							<th scope="col">Suspeitas</th>
+							<th scope="col">Mortes</th>
+						</tr>
+					</thead>
+					<tbody>{this.renderStatesList()}</tbody>
+				</table>
 			</div>
 		);
 	}
