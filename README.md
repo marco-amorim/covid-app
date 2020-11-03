@@ -1,3 +1,3 @@
 # Production
 
-https://covidappmarcoamorim.vercel.app/
+https://covidappma.vercel.app/
