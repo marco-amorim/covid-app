@@ -1,6 +1,6 @@
 ## Covid App
 
-- App for Covid-19 data in Brasil consuming external API
+- COVID-19 application to visualize live information about cases in the states of Brazil
 
 ### Production
 
